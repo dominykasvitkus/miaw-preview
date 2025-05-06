@@ -10,7 +10,25 @@
 <script type='text/javascript'>
     function initEmbeddedMessaging() {
         try {
+            const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IndlYiJ9.eyJzdWIiOiIxMzU5YmU2My01MzIwLTQzNzctODczYS1lNmJlMWZhZDI4Y2QiLCJpc3MiOiJnb2ZvcmNlIiwiaWF0IjoxNzQ2NTMzMzE5LCJleHAiOjE3NDY2MTk3MTl9.QTdXPISrCjvX4z-3FyNfVWxyQjWu2-KkRyx6IdepMQb9RC7wqX03D8TsqOeZrDFD7OWLwYc4WYKEU3KpQHgJc-1CDcg_Zpd0wZ86vf1bum1J0nMbU8M2UllkNSlQSIPWK5I3AupbLHEhkEjTPdJmG6_0DBooXGqrwlJMLFPUwoZHZxeAT5NTXl2kTwExb3maWtsX8wdapgkPhk0sdCfPtXvv3xDLsj4Xqms3_T3HQFaH5bMicWt4d-x3FL0rOwyjhpjNImoPrtfTlCfmxUwZjwU3Vmrk5UzUklZVAdY3GoOG1SWTvTLtBLF0gLSKqjsdg8CeTKpfwaQ_uP_YIYBAIg';
+
             embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+            window.addEventListener("onEmbeddedMessagingReady", () => {
+                console.log("Received the onEmbeddedMessagingReady event.");
+
+                // Send your identity token to Salesforce
+                embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                    identityTokenType: "JWT",
+                    identityToken: token,
+                });
+
+                // Send data to Salesforce
+                embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                    "EmailAddress": "test@test.com",
+                    "UserID": "123"
+                });
+            });
 
             embeddedservice_bootstrap.init(
                 '00DG5000008BGgS',
