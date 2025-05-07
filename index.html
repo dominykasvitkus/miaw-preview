@@ -10,18 +10,12 @@
 <script type='text/javascript'>
     function initEmbeddedMessaging() {
         try {
-            const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IndlYi1zdGFnZSJ9.eyJzdWIiOiIxMzU5YmU2My01MzIwLTQzNzctODczYS1lNmJlMWZhZDI4Y2QiLCJpc3MiOiJnb2ZvcmNlLS1wYXJ0ZGF0YSIsImlhdCI6MTc0NjUzMzMxOSwiZXhwIjoxODQ2NjE5NzE5fQ.W-bVESy4GSY9MsAxg3bO3sFGmDYIZsFV1IaAFQCzO4ab8XMk6ebCtPwtROiuYWXbwDHD-FAa5xYXhvUrwzp0OilMlr2FENNeD_EPBWCiSRoPwrqZL7YrBLE277d4Abv3VikQclxAUe0Lw3p2zAbslQEoUOsaYHcZ8fVd8O0NQu0u81ZyZ79SJWDlXXS7zBRCK6kbk61oFyesoMBaA2gBHkQWqBug20yALa26PxaNE2mMGFBM8T6fRomyzc61PX1Hi5_eGU13kE-lLREjmWgkxOMKdOQdcLrWDgkEz8xbn5k7bH59J5Gdt8AoqrCxi4Qw9L-8S9UhKhr3JIEFZAEmhA';
+            const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImRhc2gtc3RhZ2UifQ.eyJpc3MiOiJnb2ZvcmNlLS1wYXJ0ZGF0YSIsImlhdCI6MTc0NjU4ODMzNS40Njg0NzIsImV4cCI6MTg0NjU4ODM0NS40Njg0NzIsInN1YiI6IjQwODY1In0.rfuptfVIni38e5wlP5yAQs_tzYALPE99TyRPANu1kb-ImhUQ1W7xuxwjp3MIhQFFBggJWcp2ODJHYutwK1TqvRmCV-r-qEhgPqCn-rBxsu18-ku0aFyGrFRGUEV56YbE6GMtRf5l-kxgr-iF3MYzKUhFBrzrGqIedZB_Ev3NxpjEE49KfheXyZxTEjP2UfjDdS6NrJsoXxAjiLnO_XauFsvnAfQKaq9UnT037RY5PlvbaQGHbXx4OMKICofJSXCbFe9X7c2d6uGnini1nzAkZuyq5s6TXEGpCL112JD7C95aUtfdfy0-0WQKWuMFr4orU7-LJGJTg7BAZozPlujpHA';
 
             embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
             window.addEventListener("onEmbeddedMessagingReady", () => {
                 console.log("Received the onEmbeddedMessagingReady event.");
-
-                // Send your identity token to Salesforce
-                embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                    identityTokenType: "JWT",
-                    identityToken: token,
-                });
 
                 // Send data to Salesforce
                 embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
@@ -29,6 +23,12 @@
                     "UserID": "123",
                     "emailAddress": "test2@test2.com",
                     "userId": "123123"
+                });
+
+                // Send your identity token to Salesforce
+                embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                    identityTokenType: "JWT",
+                    identityToken: token,
                 });
             });
 
