@@ -20,7 +20,15 @@
 
             // DashStage
             // const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRhc2gtc3RhZ2UifQ.eyJzdWIiOiI0MzJmOTdhNy1iYTM3LTQ3YmUtODllOC0wYzVkMGI5MGVlMWYiLCJpc3MiOiJnb2ZvcmNlLS1wYXJ0ZGF0YSIsImlhdCI6MTc0NzIyNDAyNSwiZXhwIjoxNzQ3MzEwNDI1fQ.kaLQxdvZ9qGuNP6DxtQKNndJdIQiF1rhSfkrSqRdKW6IYxutWrUAVr74vZ3Aq8tv-l8K5cEyMCQT2Y5RptRVjRM2m_6nadk9o3gzQvWJoHbpGg5LfaQFgsCOHDysJhjpIG4F6fAJlZi50C3rgmkIAHr-WTXge1MCpp1XfYRhxRwfV9gFNMyuwt99KCeGLjuqlSHmdREFx5sVN0CK5Ma_9bqhpdNx4wUT6JMamx8rPCQrZxgs-iJEn_k-JnfUJduiAwFNyRmtAJTnxV0D_905h-yJWrcR4r_D6ZAAOktxMzVkAWYwS9ue5Ul6PqvDJbA4-aTDXW92yWOYt-D0A1qKLQ';
-            embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+            const settings = {
+                languageCode: 'en_US',
+                orgId: '00D24000000YQsF',
+                deploymentName: 'StageDeployment'
+
+            }
+
+            embeddedservice_bootstrap.settings.language = settings.languageCode; // For example, enter 'en' or 'en-US'
 
             window.addEventListener("onEmbeddedMessagingReady", () => {
                 console.log("Received the onEmbeddedMessagingReady event.");
@@ -40,11 +48,11 @@
             });
 
             embeddedservice_bootstrap.init(
-                '00Dbg000003aLDt',
-                'WebChatDeployment',
-                'https://goforce--partdata.sandbox.my.site.com/ESWWebChatDeployment1744198927760',
+                settings.orgId,
+                settings.deploymentName,
+                'https://goforce.my.site.com/ESWStageDeployment1747747812100',
                 {
-                    scrt2URL: 'https://goforce--partdata.sandbox.my.salesforce-scrt.com'
+                    scrt2URL: 'https://goforce.my.salesforce-scrt.com'
                 }
             );
         } catch (err) {
@@ -52,6 +60,6 @@
         }
     }
 </script>
-<script type='text/javascript' src='https://goforce--partdata.sandbox.my.site.com/ESWWebChatDeployment1744198927760/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://goforce.my.site.com/ESWStageDeployment1747747812100/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
