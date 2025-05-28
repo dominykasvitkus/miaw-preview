@@ -28,6 +28,7 @@
                 }
 
                 document.getElementById('token').innerText = token;
+                document.getElementById('deployment').innerText = settings.deploymentName;
 
                 embeddedservice_bootstrap.settings.language = settings.languageCode; // For example, enter 'en' or 'en-US'
 
@@ -63,6 +64,7 @@
     </script>
 </head>
 <body>
+Current deployment: <span id="deployment"></span>
 Current token: <span id="token"></span>
 <script type='text/javascript' src='https://goforce.my.site.com/ESWStageDeployment1747747812100/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
