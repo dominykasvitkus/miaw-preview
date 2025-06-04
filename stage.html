@@ -8,6 +8,9 @@
         async function initEmbeddedMessaging() {
             try {
                 const request = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
+                /**
+                 * @type {string}
+                 */
                 const token = await request.json();
 
                 const settings = {
@@ -16,7 +19,7 @@
                     deploymentName: 'WebChatDeployment'
                 }
 
-                document.getElementById('token').innerText = token;
+                document.getElementById('token').innerText = '...' + token.slice(-5);
                 document.getElementById('deployment').innerText = settings.deploymentName;
 
                 embeddedservice_bootstrap.settings.language = settings.languageCode; // For example, enter 'en' or 'en-US'
@@ -54,7 +57,8 @@
 </head>
 <body>
 Current deployment: <span id="deployment"></span><br/>
-Current token: <span id="token"></span>
+Current token: <span id="token"></span> (refresh page to generate new one)<br/>
+<a href="index.html">Index</a>
 <script type='text/javascript' src='https://goforce--partdata.sandbox.my.site.com/ESWWebChatDeployment1744198927760/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
