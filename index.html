@@ -3,57 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <title>Title</title>
-    <script type='text/javascript'>
-        async function initEmbeddedMessaging() {
-            try {
-                const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IndlYiJ9.eyJzdWIiOiI1MzQ1ZmZmZS04ZjUxLTRmNTYtYTI3My1lZDkzMjE1MWYyMWMiLCJpc3MiOiJnb2ZvcmNlIiwiaWF0IjoxNzQ4NDI1NjQwLCJleHAiOjE3NDg1MTIwNDB9.jTXK6PQU_F8DHNqDXCY08XsbzM-pufKCn9R8FxjfZd4VLNObOBQpLbEKzVTmbTC2PehY1CT9lB5vpMPHeAqfn58pb2fnUhBFZ9sQstaTs7tKBzG0O5Q2X5ArCvlu7wcuf8AV7b5faav0N6I5i5YBp8EvjbbkAuGDrr8m057GgK0sv0eyWNdMqUi3MKI3gcSjMzD-ofe6iQi17v6Iprf68-B6lUxJ-fN9c4pc3KYJxsR-KCv1QEs-wxjQNoPunNWhgDMbenqtcAGOxt-zqJkMYGGbcm4LMjLa6PypdEwCP6hUqV2P7l-bPXPBEi2tIBOpkUpV1zKM9zIsh48GBchm9Q';
-
-                const settings = {
-                    languageCode: 'en_US',
-                    orgId: '00D24000000YQsF',
-                    deploymentName: 'StageDeployment'
-                }
-
-                document.getElementById('token').innerText = token;
-                document.getElementById('deployment').innerText = settings.deploymentName;
-
-                embeddedservice_bootstrap.settings.language = settings.languageCode; // For example, enter 'en' or 'en-US'
-
-                window.addEventListener("onEmbeddedMessagingReady", () => {
-                    console.log("Received the onEmbeddedMessagingReady event.");
-
-                    // Send data to Salesforce
-                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-                        "EmailAddress": "test@test.com",
-                        "UserID": "123",
-                        "OriginURL": "https://test.com"
-                    });
-
-                    // Send your identity token to Salesforce
-                    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                        identityTokenType: "JWT",
-                        identityToken: token,
-                    });
-                });
-
-                embeddedservice_bootstrap.init(
-                    settings.orgId,
-                    settings.deploymentName,
-                    'https://goforce.my.site.com/ESWStageDeployment1747747812100',
-                    {
-                        scrt2URL: 'https://goforce.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging: ', err);
-            }
-        }
-    </script>
+    <title>MIAW Preview</title>
 </head>
 <body>
-Current deployment: <span id="deployment"></span>
-Current token: <span id="token"></span>
-<script type='text/javascript' src='https://goforce.my.site.com/ESWStageDeployment1747747812100/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<ul>
+    <li><a href="production.html">Production</a></li>
+    <li><a href="stage.html">Stage</a></li>
+</ul>
 </body>
 </html>
