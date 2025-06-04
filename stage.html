@@ -7,7 +7,8 @@
     <script type='text/javascript'>
         async function initEmbeddedMessaging() {
             try {
-                const token = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
+                const token = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging').json();
+                console.log(token);
 
                 const settings = {
                     languageCode: 'en_US',
