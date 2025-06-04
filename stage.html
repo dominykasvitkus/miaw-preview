@@ -9,7 +9,6 @@
             try {
                 const request = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
                 const token = await request.json();
-                console.log(token);
 
                 const settings = {
                     languageCode: 'en_US',

@@ -7,7 +7,8 @@
   <script type='text/javascript'>
     async function initEmbeddedMessaging() {
       try {
-        const token = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
+        const request = await fetch('https://shared-api.oxylabs.io/salesforce-messaging');
+        const token = await request.json();
 
         const settings = {
           languageCode: 'en_US',
