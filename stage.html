@@ -7,8 +7,7 @@
     <script type='text/javascript'>
         async function initEmbeddedMessaging() {
             try {
-                // const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IndlYiJ9.eyJzdWIiOiJkMmJmY2NiNy02N2FmLTRkNGYtYTBiNy0wMTMxYjI2Mjk5MTciLCJpc3MiOiJnb2ZvcmNlIiwiaWF0IjoxNzQ5MDMzODA1LCJleHAiOjIwNDkxMjAyMDV9.FPA6wRyZEzTsrVt8t_6yYvkokdukNzJqKR7foq4bVQ8mqXoCnGgNCwfGqaEE281WaDxz6vU5gFbKjRnOl7UAOAO1D4DzO-uj6eHJfgL1A1y_BsJkCA0D3SB6qbCQyQmMz6QPETiqcjs-yoP-2Apyx1k0Kdluxx23aaGmgg5PvzwTXwFPa_DDNORn-0kF8cUHdgEBKBkbZ-DxqdpdT_WZ7hSFN1C3lHRxz5peh5m4X-t4KmYuoSwOGaA-HmE79vBXCvcN54MY3pgG8Y82n1-QjpEW9eSczsvCES-CEzhd_hECIlXLT_jnZv0O2rTtprF7GEC46a0h3eUjrdjSDoOOWQ';
-                const token = fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
+                const token = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
 
                 const settings = {
                     languageCode: 'en_US',
