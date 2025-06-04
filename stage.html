@@ -52,6 +52,7 @@
                     }
                 );
             } catch (err) {
+                document.getElementById('deployment').innerText = 'error, check console';
                 console.error('Error loading Embedded Messaging: ', err);
             }
         }
