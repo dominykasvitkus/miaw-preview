@@ -21,6 +21,7 @@
             } catch (err) {
                 document.getElementById('token').innerText = 'error, check console';
                 document.getElementById('token').style.color = 'red';
+                console.log(err);
             }
 
             try {
@@ -54,6 +55,7 @@
                 );
             } catch (err) {
                 document.getElementById('deployment').innerText = 'error, check console';
+                document.getElementById('deployment').style.color = 'red';
                 console.error('Error loading Embedded Messaging: ', err);
             }
         }
