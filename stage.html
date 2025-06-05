@@ -20,6 +20,7 @@
                 document.getElementById('token').innerText = '...' + token.slice(-5);
             } catch (err) {
                 document.getElementById('token').innerText = 'error, check console';
+                document.getElementById('token').style.color = 'red';
             }
 
             try {
