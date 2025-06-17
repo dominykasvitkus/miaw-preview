@@ -14,7 +14,7 @@
             let token;
 
             try {
-                const request = await fetch('https://web-data-api.stage.int.oxyplatform.io/salesforce-messaging');
+                const request = await fetch('https://webdata.stage.int.oxyplatform.io/salesforce-messaging');
                 token = await request.json();
 
                 document.getElementById('token').innerText = '...' + token.slice(-5);
