@@ -45,18 +45,18 @@
                     });
 
                     const disableInput = () => {
-                        const input = document.querySelector('.embeddedServiceLiveAgentChatInputField');
+                        const input = document.querySelector('.embeddedMessagingInputFooterTextArea');
                         if (input) input.disabled = true;
                     };
 
                     const enableInput = () => {
-                        const input = document.querySelector('.embeddedServiceLiveAgentChatInputField');
+                        const input = document.querySelector('.embeddedMessagingInputFooterTextArea');
                         if (input) input.disabled = false;
                     };
 
                     // Listen to messages from the iframe
                     window.addEventListener("message", (event) => {
-                        console.log(event);
+                        console.log(JSON.stringify(event));
                         const data = event.data;
 
                         if (typeof data !== "object" || !data.type) return;
