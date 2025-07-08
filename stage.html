@@ -43,6 +43,34 @@
                         identityTokenType: "JWT",
                         identityToken: token,
                     });
+
+                    const disableInput = () => {
+                        const input = document.querySelector('.embeddedServiceLiveAgentChatInputField');
+                        if (input) input.disabled = true;
+                    };
+
+                    const enableInput = () => {
+                        const input = document.querySelector('.embeddedServiceLiveAgentChatInputField');
+                        if (input) input.disabled = false;
+                    };
+
+                    // Listen to messages from the iframe
+                    window.addEventListener("message", (event) => {
+                        console.log(event);
+                        const data = event.data;
+
+                        if (typeof data !== "object" || !data.type) return;
+
+                        // Detect guest message send
+                        if (data.type === "EmbeddedMessagingInput" && data.messageType === "userInput") {
+                            disableInput();
+                        }
+
+                        // Detect bot/agent response
+                        if (data.type === "EmbeddedMessagingInput" && data.messageType === "incomingMessage") {
+                            enableInput();
+                        }
+                    });
                 });
 
                 embeddedservice_bootstrap.init(
