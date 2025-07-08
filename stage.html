@@ -58,6 +58,7 @@
                     window.addEventListener("message", (event) => {
                         console.log(JSON.stringify(event));
                         const data = event.data;
+                        console.log(JSON.stringify(data));
 
                         if (typeof data !== "object" || !data.type) return;
 
