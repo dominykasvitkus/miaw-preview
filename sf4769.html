@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>MIAW Preview - Stage</title>
+    <script type='text/javascript'>
+        async function initEmbeddedMessaging() {
+            const settings = {
+                languageCode: 'en_US',
+                orgId: '00DAP00000F7Lof',
+                deploymentName: 'WebChatDeployment'
+            }
+            let token;
+
+            try {
+                const request = await fetch('https://webdata.stage.int.oxyplatform.io/salesforce-messaging');
+                token = await request.json();
+
+                document.getElementById('token').innerText = '...' + token.slice(-5);
+            } catch (err) {
+                document.getElementById('token').innerText = 'error, check console';
+                document.getElementById('token').style.color = 'red';
+                console.log(err);
+            }
+
+            try {
+                document.getElementById('deployment').innerText = settings.deploymentName;
+                embeddedservice_bootstrap.settings.language = settings.languageCode; // For example, enter 'en' or 'en-US'
+                embeddedservice_bootstrap.settings.enableUserInputForConversationWithBot = false;
+
+                window.addEventListener("onEmbeddedMessagingReady", () => {
+                    console.log("Received the onEmbeddedMessagingReady event.");
+
+                    // Send data to Salesforce
+                    embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                        // "EmailAddress": "test@test.com",
+                        "UserID": "123",
+                        "OriginURL": "https://test.com"
+                    });
+
+                    // Send your identity token to Salesforce
+                    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                        identityTokenType: "JWT",
+                        identityToken: token,
+                    });
+                });
+
+                embeddedservice_bootstrap.init(
+                    settings.orgId,
+                    settings.deploymentName,
+                    'https://goforce--sf4769.sandbox.my.site.com/ESWStageDeployment1747747812100',
+                    {
+                        scrt2URL: 'https://goforce--sf4769.sandbox.my.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                document.getElementById('deployment').innerText = 'error, check console';
+                document.getElementById('deployment').style.color = 'red';
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        }
+    </script>
+</head>
+<body>
+Current deployment: <span id="deployment"><i>loading...</i></span><br/>
+Current token: <span id="token"><i>loading...</i></span> (refresh page to generate new one)<br/>
+<a href="index.html">Index</a>
+<script type='text/javascript' src='https://goforce--partdata.sandbox.my.site.com/ESWWebChatDeployment1744198927760/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
